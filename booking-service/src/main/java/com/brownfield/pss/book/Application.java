@@ -20,6 +20,10 @@ import com.brownfield.pss.book.entity.Passenger;
 import com.brownfield.pss.book.repository.BookingRepository;
 import com.brownfield.pss.book.repository.InventoryRepository;
 
+/**
+ * @author krishna
+ *
+ */
 @EnableDiscoveryClient 
 @SpringBootApplication
 public class Application implements CommandLineRunner{
