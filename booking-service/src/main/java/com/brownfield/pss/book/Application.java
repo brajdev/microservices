@@ -24,27 +24,27 @@ import com.brownfield.pss.book.repository.InventoryRepository;
  * @author krishna
  *
  */
-@EnableDiscoveryClient 
+@EnableDiscoveryClient
 @SpringBootApplication
 public class Application implements CommandLineRunner{
 	private static final Logger logger = LoggerFactory.getLogger(Application.class);
 	@Autowired
 	private BookingRepository bookingRepository;
-	
+
 	@Autowired
 	private BookingComponent bookingComponent;
-	
+
 	@Autowired
-	InventoryRepository inventoryRepository;
-	
+	private InventoryRepository inventoryRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
 
 	@Override
 	public void run(String... strings) throws Exception {
-		
-		Inventory[] invs = { 
+
+		Inventory[] invs = {
 					new Inventory("BF100", "22-JAN-16", 100),
 					new Inventory("BF101", "22-JAN-16", 100),
 					new Inventory("BF102", "22-JAN-16", 100),
@@ -53,22 +53,23 @@ public class Application implements CommandLineRunner{
 					new Inventory("BF105", "22-JAN-16", 100),
 					new Inventory("BF106", "22-JAN-16", 100)};
 		Arrays.asList(invs).forEach(inventory -> inventoryRepository.save(inventory));
-				
-		 
-		
+
+
+
 		BookingRecord booking = new BookingRecord("BF101", "NYC","SFO","22-JAN-16",new Date(),"101");
 		Set<Passenger> passengers = new HashSet<Passenger>();
-		passengers.add(new Passenger("Gean","Franc","Male", booking));
+		 passengers.add(new Passenger("Gean","Franc","Male", booking));
 	//	passengers.add(new Passenger("Redi","Ivan","Female",booking));
-	 	
+
 		booking.setPassengers(passengers);
+		
  		long record  = bookingComponent.book(booking);
 		logger.info("Booking successfully saved..." + record);
-		
-		logger.info("Looking to load booking record..."); 
+
+		logger.info("Looking to load booking record...");
 	    logger.info("Result: " + bookingComponent.getBooking(record));
- 
-	    
+
+
 	}
-	
+
 }
