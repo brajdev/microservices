@@ -1,4 +1,4 @@
-FROM java:8
+FROM openjdk:8-jdk-alpine
 VOLUME /tmp
 ADD  booking-service-api-gateway-1.0.jar booking-service-api-gateway.jar
 RUN sh -c 'touch /booking-service-api-gateway.jar'

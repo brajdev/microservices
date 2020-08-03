@@ -1,4 +1,4 @@
-FROM java:8
+FROM openjdk:8-jdk-alpine
 VOLUME /tmp
 ADD  hystrixdashboard-1.0.jar hystrixdashboard.jar
 RUN sh -c 'touch /hystrixdashboard.jar'

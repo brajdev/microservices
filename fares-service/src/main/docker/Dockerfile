@@ -1,4 +1,4 @@
-FROM java:8
+FROM openjdk:8-jdk-alpine
 VOLUME /tmp
 ADD  fares-service-1.0.jar fares-service.jar
 RUN sh -c 'touch /fares-service.jar'

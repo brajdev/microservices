@@ -1,4 +1,4 @@
-FROM java:8
+FROM openjdk:8-jdk-alpine
 VOLUME /tmp
 ADD  fares-service-api-gateway-1.0.jar fares-services-api-gateway.jar
 RUN sh -c 'touch /fares-services-api-gateway.jar'

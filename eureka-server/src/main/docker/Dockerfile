@@ -1,4 +1,4 @@
-FROM java:8
+FROM openjdk:8-jdk-alpine
 VOLUME /tmp
 ADD  eureka-server-1.0.jar eureka-server.jar
 RUN sh -c 'touch /eureka-server.jar'
