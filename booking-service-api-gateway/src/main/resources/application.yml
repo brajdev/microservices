@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: booking-service-api-gateway
+
+server:
+  port: 8065
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://172.17.0.1:8761/eureka/
+    registerWithEureka: true
+    fetchRegistry: true
+    instance:
+      preferIpAddress: true
+  healthcheck:
+    enabled: true
