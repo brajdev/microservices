@@ -15,11 +15,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import com.brownfield.pss.fares.entity.Fare;
 import com.brownfield.pss.fares.repository.FaresRepository;
 
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableDiscoveryClient 
-@EnableSwagger2 
 public class Application implements CommandLineRunner {
 	private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
