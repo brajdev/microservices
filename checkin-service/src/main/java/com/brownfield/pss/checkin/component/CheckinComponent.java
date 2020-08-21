@@ -1,6 +1,7 @@
 package com.brownfield.pss.checkin.component;
 
 import java.util.Date;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,8 +36,8 @@ public class CheckinComponent {
 		
 	}
 	
-	public CheckInRecord getCheckInRecord(long id){
-		return checkinRepository.findOne(id);
+	public Optional<CheckInRecord> getCheckInRecord(long id){
+		return checkinRepository.findById(id);
 	}
 	
 }	

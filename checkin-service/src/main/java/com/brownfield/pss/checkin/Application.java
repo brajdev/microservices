@@ -34,12 +34,8 @@ public class Application implements CommandLineRunner {
 		 
  		CheckInRecord result  = repository.save(record);
 		logger.info("checked in successfully ..." + result);
-		
-		
-		
+
 		logger.info("Looking to load checkedIn record..."); 
-	    logger.info("Result: " + repository.findOne(result.getId()));
- 
-	    
+
 	}
 }

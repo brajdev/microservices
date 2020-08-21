@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.brownfield.pss.checkin.component.CheckinComponent;
 import com.brownfield.pss.checkin.entity.CheckInRecord;
 
+import java.util.Optional;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/checkin")
@@ -24,7 +26,7 @@ public class CheckInController {
 	}
 	
 	@RequestMapping("/get/{id}")
-	CheckInRecord getCheckIn(@PathVariable long id ){
+	Optional<CheckInRecord> getCheckIn(@PathVariable long id ){
 		return checkInComponent.getCheckInRecord(id);
 	}
 
