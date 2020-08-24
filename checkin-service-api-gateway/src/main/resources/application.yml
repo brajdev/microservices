@@ -8,10 +8,22 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://172.17.0.1:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
     registerWithEureka: true
     fetchRegistry: true
     instance:
       preferIpAddress: true
   healthcheck:
     enabled: true
+
+zuul:
+  host:
+    connect-timeout-millis: 5000000
+    socket-timeout-millis: 5000000
+  ignoredServices: '*'
+  routes:
+    checkin-service:
+      path: /api/**
+      serviceId: checkin-service
+      stripPrefix: true
+
