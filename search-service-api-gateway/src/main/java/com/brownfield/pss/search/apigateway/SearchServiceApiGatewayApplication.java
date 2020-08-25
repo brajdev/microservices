@@ -1,17 +1,13 @@
 package com.brownfield.pss.search.apigateway;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
-import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
@@ -19,27 +15,28 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import javax.servlet.http.HttpServletRequest;
+
+//import org.springframework.cloud.sleuth.sampler.AlwaysSampler
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @EnableZuulProxy
 @EnableDiscoveryClient
 @SpringBootApplication
 @CrossOrigin
 @EnableSwagger2
-@EnableCircuitBreaker
-
+//@EnableCircuitBreaker
 public class SearchServiceApiGatewayApplication {
 
 	private static final Logger logger = LoggerFactory.getLogger(SearchServiceApiGatewayApplication.class);
 
-	@Bean
+	/*@Bean
 	public AlwaysSampler defaultSampler() {
 		System.out.println("Sample Getting Initalized.....+++++ in Search API Gateway");
 		return new AlwaysSampler();
-	}
+	}*/
 
 	public static void main(String[] args) {
 		SpringApplication.run(SearchServiceApiGatewayApplication.class, args);

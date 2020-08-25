@@ -14,10 +14,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+//import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.web.client.RestTemplate;
 
-@EnableGlobalMethodSecurity
+//@EnableGlobalMethodSecurity
 @SpringBootApplication
 @EnableDiscoveryClient
 public class Application implements CommandLineRunner {
@@ -32,8 +32,6 @@ public class Application implements CommandLineRunner {
 	@Autowired
 	private RestTemplate checkInClient;
 
-	RestTemplate restClient = new RestTemplate();
-
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
@@ -42,14 +40,9 @@ public class Application implements CommandLineRunner {
 	public void run(String... strings) throws Exception {
 		// Search for a flight
 		SearchQuery searchQuery = new SearchQuery("SEA", "SFO", "22-JAN-16");
-		Flight[] flights = searchClient.postForObject("http://search-apigateway/api/search/get", searchQuery, Flight[].class);
-		// Flight[] flights =
-		// searchClient.postForObject("http://search-service/search/get",
-		// searchQuery, Flight[].class);
-		// Flight[] flights =
-		// searchClient.postForObject("http://localhost:8090/search/get",
-		// searchQuery, Flight[].class);
-
+		logger.info("Initiating Search REST Call");
+		//Flight[] flights = searchClient.postForObject("http://search-service/search/get", searchQuery, Flight[].class);
+		Flight[] flights = searchClient.postForObject("http://search-service-api-gateway/api/search/get", searchQuery, Flight[].class);
 		Arrays.asList(flights).forEach(flight -> logger.info(" flight >" + flight));
 
 		// create a booking only if there are flights.
@@ -62,15 +55,21 @@ public class Application implements CommandLineRunner {
 		Set<Passenger> passengers = new HashSet<Passenger>();
 		passengers.add(new Passenger("Gavin", "Franc", "Male", booking));
 		booking.setPassengers(passengers);
+
+		Greeting greeting = new Greeting(2010, "Hare Krishna");
+
+
 		long bookingId = 0;
 		try {
-			bookingId = bookingClient.postForObject("http://booking-apigateway/api/booking/create", booking, long.class); 
-			//bookingId = bookingClient.postForObject("http://booking-service/booking/create", booking, long.class);
-			// bookingId =
-			// bookingClient.postForObject("http://localhost:8060/booking/create",
-			// booking, long.class);
-			logger.info("Booking created " + bookingId);
+
+			logger.info("Initiating Booking REST Call");
+			bookingClient.getForObject("http://booking-service-api-gateway/api/booking/greeting", Greeting.class);
+
+			bookingId = bookingClient.postForObject( "http://booking-service-api-gateway/api/booking/create", booking, long.class);
+
+			logger.info("Booking created ");
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error("BOOKING SERVICE NOT AVAILABLE...!!!");
 		}
 
@@ -79,11 +78,10 @@ public class Application implements CommandLineRunner {
 			return;
 		try {
 			CheckInRecord checkIn = new CheckInRecord("Franc", "Gavin", "28C", null, "BF101", "22-JAN-16", bookingId);
-			long checkinId = checkInClient.postForObject("http://checkin-apigateway/api/checkin/create", checkIn, long.class); 
+			logger.info("Initiating Checking REST Call");
 			//long checkinId = checkInClient.postForObject("http://checkin-service/checkin/create", checkIn, long.class);
-			// long checkinId =
-			// checkInClient.postForObject("http://localhost:8070/checkin/create",
-			// checkIn, long.class);
+			long checkinId = checkInClient.postForObject("http://checkin-service-api-gateway/api/checkin/create", checkIn, long.class);
+
 			logger.info("Checked IN " + checkinId);
 		} catch (Exception e) {
 			logger.error("CHECK IN SERVICE NOT AVAILABLE...!!!");

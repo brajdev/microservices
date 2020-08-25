@@ -13,10 +13,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import com.brownfield.pss.checkin.entity.CheckInRecord;
 import com.brownfield.pss.checkin.repository.CheckinRepository;
 
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
-@EnableDiscoveryClient 
-@EnableSwagger2 
+@EnableDiscoveryClient
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 	private static final Logger logger = LoggerFactory.getLogger(Application.class);
@@ -34,12 +31,8 @@ public class Application implements CommandLineRunner {
 		 
  		CheckInRecord result  = repository.save(record);
 		logger.info("checked in successfully ..." + result);
-		
-		
-		
+
 		logger.info("Looking to load checkedIn record..."); 
-	    logger.info("Result: " + repository.findOne(result.getId()));
- 
-	    
+
 	}
 }

@@ -10,7 +10,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
+//import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
 import org.springframework.context.annotation.Bean;
 
 import com.brownfield.pss.search.entity.Fares;
@@ -18,11 +18,11 @@ import com.brownfield.pss.search.entity.Flight;
 import com.brownfield.pss.search.entity.Inventory;
 import com.brownfield.pss.search.repository.FlightRepository;
 
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
+//import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableSwagger2
+//@EnableSwagger2
 public class Application implements CommandLineRunner {
 	private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
@@ -44,7 +44,7 @@ public class Application implements CommandLineRunner {
 		flights.add(new Flight("BF103", "HOU", "SFO", "22-JAN-16", new Fares("103", "USD"), new Inventory(100)));
 		flights.add(new Flight("BF104", "LAX", "SFO", "22-JAN-16", new Fares("104", "USD"), new Inventory(100)));
 
-		flightRepository.save(flights);
+		flightRepository.saveAll(flights);
 
 		logger.info("Looking to load flights...");
 		for (Flight flight : flightRepository.findByOriginAndDestinationAndFlightDate("NYC", "SFO", "22-JAN-16")) {
@@ -52,10 +52,10 @@ public class Application implements CommandLineRunner {
 		}
 	}
 
-	@Bean
-	public AlwaysSampler defaultSampler() {
-		System.out.println("Sample Getting Initalized.....+++++ in Search Service");
-		return new AlwaysSampler();
-	}
+	//@Bean
+	//public AlwaysSampler defaultSampler() {
+		//System.out.println("Sample Getting Initalized.....+++++ in Search Service");
+		//return new AlwaysSampler();
+	//}
 
 }

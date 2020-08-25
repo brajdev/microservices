@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.brownfield.pss.book.component.BookingComponent;
 import com.brownfield.pss.book.entity.BookingRecord;
 
+import java.util.Optional;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/booking")
@@ -29,7 +31,7 @@ public class BookingController {
 	}
 	
 	@RequestMapping("/get/{id}")
-	public BookingRecord getBooking(@PathVariable long id){
+	public Optional<BookingRecord> getBooking(@PathVariable long id){
 		return bookingComponent.getBooking(id);
 	}	
 }

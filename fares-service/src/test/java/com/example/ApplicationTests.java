@@ -6,7 +6,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.brownfield.pss.fares.Application;
 
-import org.springframework.boot.test.SpringApplicationConfiguration;
+//import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 //@RunWith(SpringJUnit4ClassRunner.class)
@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 //@WebAppConfiguration
 public class ApplicationTests {
 
-	@Test
+	//@Test
 	public void contextLoads() {
 	}
 

@@ -1,4 +1,4 @@
-FROM java:8
+FROM openjdk:8-jdk-alpine
 VOLUME /tmp
 ADD  booking-service-1.0.jar booking-service.jar
 RUN sh -c 'touch /booking-service.jar'
