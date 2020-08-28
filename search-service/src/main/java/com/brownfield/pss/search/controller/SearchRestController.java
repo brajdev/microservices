@@ -35,8 +35,8 @@ public class SearchRestController {
 	/**
 	 * 
 	 */
-	//@Value("${originairports.shutdown}")
-	//private String originairports;
+	@Value("${originairports.shutdown}")
+	private String originairports;
 
 	private SearchComponent searchComponent;
 
