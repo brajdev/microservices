@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.brownfield.pss</groupId>
-	<artifactId>web-app</artifactId>
+	<artifactId>airline-web-client</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
 
-	<name>web-app</name>
+	<name>airline-web-client</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>

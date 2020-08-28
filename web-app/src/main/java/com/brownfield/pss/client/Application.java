@@ -56,14 +56,11 @@ public class Application implements CommandLineRunner {
 		passengers.add(new Passenger("Gavin", "Franc", "Male", booking));
 		booking.setPassengers(passengers);
 
-		Greeting greeting = new Greeting(2010, "Hare Krishna");
-
 
 		long bookingId = 0;
 		try {
 
 			logger.info("Initiating Booking REST Call");
-			bookingClient.getForObject("http://booking-service-api-gateway/api/booking/greeting", Greeting.class);
 
 			bookingId = bookingClient.postForObject( "http://booking-service-api-gateway/api/booking/create", booking, long.class);
 
