@@ -8,11 +8,12 @@ spring:
           uri: https://github.com/brajdev/config-server
 
 server:
-  port: 8888
+  port: 8889
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://172.17.0.1:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
+      #defaultZone: http://172.17.0.1:8761/eureka/
     registerWithEureka: true
     fetchRegistry: true
     instance:
