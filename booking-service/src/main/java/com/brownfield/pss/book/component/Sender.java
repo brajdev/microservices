@@ -11,26 +11,11 @@ import org.springframework.stereotype.Component;
 @EnableBinding(BookingSource.class)
 public class Sender {
 
-	/**
-	 * RabbitMessagingTemplate template;
-	 * 
-	 * @Autowired Sender(RabbitMessagingTemplate template) { this.template =
-	 *            template; }
-	 * 
-	 * @Bean Queue queue() { return new Queue("SearchQ", false); }
-	 * 
-	 * @Bean Queue queue1() { return new Queue("CheckINQ", false); }
-	 * 
-	 *       public void send(Object message) {
-	 *       template.convertAndSend("SearchQ", message); }
-	 **/
-
 	@Output(BookingSource.InventoryQ)
 	@Autowired
 	private MessageChannel messageChannel;
 
 	public void send(Object message) {
-		// template.convertAndSend("InventoryQ", message);
 		messageChannel.send(MessageBuilder.withPayload(message).build());
 	}
 }

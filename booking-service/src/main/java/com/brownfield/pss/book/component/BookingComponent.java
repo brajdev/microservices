@@ -40,7 +40,7 @@ public class BookingComponent {
 		// this.restTemplate = new RestTemplate();
 		this.sender = sender;
 		this.inventoryRepository = inventoryRepository;
-		this.fareServiceProxy = fareServiceProxy;
+		//this.fareServiceProxy = fareServiceProxy;
 	}
 
 	public long book(BookingRecord record) {
@@ -53,16 +53,16 @@ public class BookingComponent {
 		 * Fare.class);
 		 */
 
-		Fare fare = fareServiceProxy.getFare(record.getFlightNumber(), record.getFlightDate());
-
-		logger.info("calling fares to get fare " + fare);
-
-		System.out.println("Booking Record Fare Value" + record.getFare());
-		System.out.println("Fare from Fare-Service" + fare.getFare());
-		// check fare
-		if (!record.getFare().equals(fare.getFare()))
-			throw new BookingException("fare is tampered");
-		logger.info("calling inventory to get inventory");
+//		Fare fare = fareServiceProxy.getFare(record.getFlightNumber(), record.getFlightDate());
+//
+//		logger.info("calling fares to get fare " + fare);
+//
+//		System.out.println("Booking Record Fare Value" + record.getFare());
+//		System.out.println("Fare from Fare-Service" + fare.getFare());
+//		// check fare
+//		if (!record.getFare().equals(fare.getFare()))
+//			throw new BookingException("fare is tampered");
+//		logger.info("calling inventory to get inventory");
 
 		// check inventory
 		Inventory inventory = inventoryRepository.findByFlightNumberAndFlightDate(record.getFlightNumber(),

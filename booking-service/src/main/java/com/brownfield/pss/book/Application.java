@@ -20,12 +20,14 @@ import com.brownfield.pss.book.entity.Passenger;
 import com.brownfield.pss.book.repository.BookingRepository;
 import com.brownfield.pss.book.repository.InventoryRepository;
 
+
 /**
  * @author krishna
  *
  */
 @EnableDiscoveryClient
 @SpringBootApplication
+
 public class Application implements CommandLineRunner{
 	private static final Logger logger = LoggerFactory.getLogger(Application.class);
 	@Autowired
@@ -52,6 +54,7 @@ public class Application implements CommandLineRunner{
 					new Inventory("BF104", "22-JAN-16", 100),
 					new Inventory("BF105", "22-JAN-16", 100),
 					new Inventory("BF106", "22-JAN-16", 100)};
+
 		Arrays.asList(invs).forEach(inventory -> inventoryRepository.save(inventory));
 
 
