@@ -59,6 +59,7 @@ public class BrownFieldSiteController {
 
 	@RequestMapping(value = "/confirm", method = RequestMethod.POST)
 	public String ConfirmBooking(@ModelAttribute UIData uiData, Model model) {
+		logger.info("Booking Getting Confirmed... ");
 		Flight flight = uiData.getSelectedFlight();
 		BookingRecord booking = new BookingRecord(flight.getFlightNumber(), flight.getOrigin(), flight.getDestination(),
 				flight.getFlightDate(), null, flight.getFares().getFare());
@@ -69,7 +70,7 @@ public class BrownFieldSiteController {
 		booking.setPassengers(passengers);
 		long bookingId = 0;
 		try {
-			bookingId = bookingClient.postForObject("http://booking-apigateway/api/booking/create", booking, long.class);
+			bookingId = bookingClient.postForObject("http://booking-service-api-gateway/api/booking/create", booking, long.class);
 
 			logger.info("Booking created " + bookingId);
 		} catch (Exception e) {
