@@ -17,7 +17,7 @@ public class Sender {
 	}
 	@Bean
 	Queue queue() {
-		return new Queue("CheckINQ", false);
+		return new Queue("checkInQ", false);
 	}
 	
 	public void send(Object message){

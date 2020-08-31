@@ -2,7 +2,7 @@ spring:
   application:
     name: checkin-service
   rabbitmq:
-    host: localhost
+    host: 172.17.0.3
     port: 5672
     username: guest
     password: guest
@@ -18,7 +18,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://172.17.0.1:8761/eureka/
     registerWithEureka: true
     fetchRegistry: true
     instance:
