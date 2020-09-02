@@ -1,6 +1,4 @@
 spring:
-  application:
-    name: booking-service
   rabbitmq:
     host: 172.17.0.3
     port: 5672
