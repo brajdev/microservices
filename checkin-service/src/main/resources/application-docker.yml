@@ -14,6 +14,9 @@ server:
   port: 8070
 
 eureka:
+  instance:
+    preferIpAddress: true
+    hostname: checkin-service
   client:
     serviceUrl:
       defaultZone: http://172.17.0.1:8761/eureka/
