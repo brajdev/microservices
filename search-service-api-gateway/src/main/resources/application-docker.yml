@@ -2,6 +2,9 @@ server:
   port: 8095
 
 eureka:
+  instance:
+    preferIpAddress: true
+    hostname: search-service-api-gateway
   client:
     serviceUrl:
       defaultZone: http://172.17.0.1:8761/eureka/
