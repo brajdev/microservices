@@ -2,6 +2,9 @@ server:
   port: 8075
 
 eureka:
+  instance:
+    preferIpAddress: true
+    hostname: checkin-service-api-gateway
   client:
     serviceUrl:
       defaultZone: http://172.17.0.1:8761/eureka/

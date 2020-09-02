@@ -2,6 +2,9 @@ server:
   port: 8085
 
 eureka:
+  instance:
+    preferIpAddress: true
+    hostname: fares-service-api-gateway
   client:
     serviceUrl:
       defaultZone: http://172.17.0.1:8761/eureka/
