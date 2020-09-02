@@ -1,6 +1,4 @@
 spring:
-  application:
-    name: search-service
   rabbitmq:
     host: localhost
     port: 5672
@@ -11,7 +9,6 @@ spring:
       bindings:
         inventoryQ:
           destination: inventoryQ
-
 server:
   port: 8090
 
