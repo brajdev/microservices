@@ -13,6 +13,9 @@ server:
   port: 8090
 
 eureka:
+  instance:
+    preferIpAddress: true
+    hostname: search-service
   client:
     serviceUrl:
       defaultZone: http://172.17.0.1:8761/eureka/
