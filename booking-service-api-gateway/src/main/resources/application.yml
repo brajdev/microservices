@@ -1,7 +1,3 @@
-spring:
-  application:
-    name: booking-service-api-gateway
-
 server:
   port: 8065
 
